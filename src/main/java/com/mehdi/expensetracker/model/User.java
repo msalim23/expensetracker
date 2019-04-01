@@ -1,5 +1,7 @@
 package com.mehdi.expensetracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +88,10 @@ public class User {
 
     public void addExpense(Expense expense){
         this.expenses.add(expense);
-        this.solde=-expense.getAmount();
+        if (this.solde>=expense.getAmount()) {
+            this.setSolde(this.solde - expense.getAmount());
+        }else {
+            System.out.println("pas assez d'argent");
+        }
     }
 }

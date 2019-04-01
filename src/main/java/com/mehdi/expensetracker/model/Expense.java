@@ -1,5 +1,7 @@
 package com.mehdi.expensetracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Expense {
     private double amount;
     private String description;
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     public int getId() {
